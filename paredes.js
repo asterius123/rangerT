@@ -1,16 +1,17 @@
 class Paredes{
-    constructor(x,y,largura,altura,angulo,inimigo){
+    constructor(x,y,largura,altura,angulo){
         this.sprite = createSprite(x,y,largura,altura,angulo);
-        this.sprite.visible=false;
+        //this.sprite.visible = false;
         this.angulo = angulo;
         this.toque = false;
-        this.inimigo = inimigo;
     }
-    virar(){
-        if (this.inimigo.sprite.isTouching(this.sprite) && !this.toque) {
-            angulo = this.angulo;
-            this.inimigo.sprite.setSpeedAndDirection(this.inimigo.velocidade, angulo);
-            this.toque = true;
-          }
+    virar(Monstro){
+        this.sprite.isTouching(Monstro.sprite,(inimigo,parede)=>{
+            if (!Monstro.toque) {
+                angulo = this.angulo;
+                inimigo.setSpeedAndDirection(inimigo.velocidade, angulo);
+                Monstro.toque = "P1";
+            }
+        })  
     }
 }
