@@ -27,16 +27,20 @@ function setup() {
   Cdoge.sprite.addImage(dogeImage);
   SpritesInimigos = new Group();
 
-  P1 = new Paredes(155,430,500,10);
+  P1 = new Paredes(155,430,500,10,-3);
+  P2 = new Paredes(720,400,10,500,-45);
+  P3 = new Paredes(980,200,500,10,45);
+  P4 = new Paredes(980,430,300,10,-3);
 }
 
 function draw() {
   background(map);  
-  text(mouseX+ ", "+mouseY,10,10)
+  text(mouseX+ ", "+mouseY,10,10);
+
+  //acionar a função de virar para cada parede e para cada monstro
   for (let i = 0; i < ObjetosInimigos.length; i++) {
     const M = ObjetosInimigos[i];
-    P1.virar(M);
-    
+    M.virar();
   }
   gerarInimigos();
   drawSprites();
